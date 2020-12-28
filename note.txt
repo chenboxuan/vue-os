@@ -1,0 +1,45 @@
+一.应用控制。
+
+  1.使用vuex进行页面状态管理。
+
+  2.所有可打开桌面弹窗的数据都存入 （vuex）appList。
+
+  3.appList数据说明：
+    id：唯一标识
+    show：控制底部标签显示与隐藏
+    name：app名称
+    logo：applogo
+    type：应用类型 | Number（1:桌面应用）
+    modalInfo：弹窗用到的数据
+      modalInfo.component：弹窗内容组件名称（动态组件对应的组件名）
+      modalInfo.visible: 控制弹窗显示与隐藏
+      modalInfo.width: 弹窗宽
+      modalInfo.left: 弹窗定位位置
+      modalInfo.top: 弹窗定位位置
+      modalInfo.zIndex: 弹窗权重
+      modalInfo.isFull: 是否全屏
+
+  4.（vuex）actionApp是当前正在操作的弹窗对应的app数据，当双击桌面时赋值，点击底部标签时赋值。
+
+  5.当双击桌面应用时：visible和show变为true，isFull重置，底部与桌面同时显示，如果桌面已开不进行任何操，zIndex重新计算，保证最新打开的在最上面。
+
+  6.底部标签：
+    a. 激活状态用visible控制，弹窗开即是激活。
+    b. 点击：激活弹窗visible，重新计算zIndex置顶，actionApp赋值。
+  
+  7.弹窗控制：
+    a. 关闭按钮：visible=false，show=false，isFull=false。
+    b. 隐藏按钮：visible=false。
+    c. 全屏按钮： isFull=true。
+
+  8.其他应用弹窗同理，只是type不同而已。
+
+二.组件。
+
+  1.首页桌面：头部、app列表、底部。
+
+  2.头部：菜单列表、信息栏。
+
+  3.底部：标签列表、其他。
+
+  4.弹窗组件。
