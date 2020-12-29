@@ -1,11 +1,18 @@
 const mutations = {
   // app 开启与关闭
   changeAppModal: (state, params) => {
+    const number = state.appList.map(item => {
+      return item.modalInfo.number
+    }).sort((a, b) => {
+      return b - a
+    })[0]
+
     state.appList.forEach(item => {
       if (item.id === params.data.id) {
         item.modalInfo.visible = params.show
         item.modalInfo.isFull = item.modalInfo.isFull
         item.modalInfo.show = params.show
+        if (params.show) item.modalInfo.number = number + 1
       }
     })
   },

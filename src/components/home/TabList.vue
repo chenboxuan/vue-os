@@ -1,6 +1,6 @@
 <template>
   <div class="u-flex u-col-center list-wrap">
-    <template v-for="item of $store.state.appList">
+    <template v-for="item of tabListData">
       <div
         :class="tabClass(item)"
         :key="item.id"
@@ -29,6 +29,13 @@ export default {
         }
         return res
       }
+    },
+    tabListData () {
+      let arr = [...this.$store.state.appList]
+      arr.sort((a, b) => {
+        return a.modalInfo.number - b.modalInfo.number
+      })
+      return arr
     }
   },
   methods: {
