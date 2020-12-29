@@ -1,6 +1,6 @@
 <template>
-  <div class="input-wrap u-rela">
-    <span>搜索</span>
+  <div class="input-wrap u-flex u-col-center u-row-right">
+    <div class="input-label">搜索</div>
     <input placeholder="请输入要搜索的内容" type="text" />
     <div class="icon">
       <svg
@@ -34,7 +34,8 @@ export default {
 
   input {
     margin-left: 10px;
-    padding: 0 40px 0 5px;
+    margin-right: -4px;
+    padding: 0 20px 0 5px;
     width: 200px;
     height: 28px;
     font-size: 12px;
@@ -48,9 +49,6 @@ export default {
   }
 
   .icon {
-    position: absolute;
-    right: 14px;
-    top: 10px;
     width: 28px;
     height: 28px;
     line-height: 28px;
@@ -62,6 +60,10 @@ export default {
     svg {
       vertical-align: sub;
     }
+  }
+
+  .input-label {
+    width: 28px;
   }
 }
 </style>

@@ -3,8 +3,6 @@ const path = require('path')
 
 module.exports = {
   lintOnSave: false,
-  // 按需修改即可
-  publicPath: 'https://chenboxuan.github.io/vue-os/dist/',
 
   chainWebpack: config => {
     // 自动化导入css文件

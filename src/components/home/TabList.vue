@@ -8,7 +8,7 @@
         @click="changeActionApp(item)"
       >
         <img :src="item.logo" alt="" />
-        <span>{{ item.name }}</span>
+        <span class="u-line-1">{{ item.name }}</span>
       </div>
     </template>
   </div>
@@ -23,7 +23,7 @@ export default {
   computed: {
     tabClass () {
       return item => {
-        let res = 'tab-item '
+        let res = 'tab-item u-flex u-col-center '
         if (item.id === this.$store.state.actionApp.id && item.modalInfo.visible) {
           res += 'tab-active'
         }
@@ -49,6 +49,14 @@ export default {
 <style lang="less" scoped>
 .list-wrap {
   margin: 0 15px;
+  width: 91%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+.list-wrap::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 .tab-item {
   margin-right: 5px;
@@ -57,6 +65,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   font-size: 12px;
+  max-width: 120px;
 
   img {
     margin-right: 5px;

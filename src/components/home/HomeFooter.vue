@@ -42,9 +42,13 @@
       <tab-list></tab-list>
     </div>
 
-    <div class="u-flex u-col-center">
+    <div class="u-flex u-col-center u-row-right right-wrap">
       <footer-search></footer-search>
-      <img class="logo" src="https://file.chenboxuan.cn/hexo-blog/cover/default.jpg" alt="" />
+      <img
+        class="logo"
+        src="https://file.chenboxuan.cn/hexo-blog/cover/default.jpg"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -98,8 +102,11 @@ export default {
   width: 1px;
   background-color: #fff;
 }
+.right-wrap {
+  width: 28%;
+}
 .logo {
-  height: 24px;
+  height: 28px;
   vertical-align: middle;
 }
 </style>

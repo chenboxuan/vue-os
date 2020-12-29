@@ -136,9 +136,11 @@ export default {
   methods: {
     close () {
       this.$store.commit('changeAppModal', { data: this.app, show: false })
+      this.$store.commit('modifyActionApp')
     },
     hide () {
       this.$store.commit('changeAppVisible', { data: this.app, show: false })
+      this.$store.commit('modifyActionApp')
     },
     action () {
       this.$store.commit('changeActionApp', this.app)
