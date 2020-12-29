@@ -1,5 +1,7 @@
 # Vue OS
 
+[项目演示地址](https://chenboxuan.github.io/vue-os/)
+
 ## Project setup
 ```
 npm install
