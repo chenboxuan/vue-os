@@ -67,6 +67,9 @@ export default {
       if (clientH - top < h) {
         top = top - h
       }
+      if (clientW - left < w) {
+        left = left - w
+      }
       this.menuStyle = {
         left: left + 'px',
         top: top + 'px',
