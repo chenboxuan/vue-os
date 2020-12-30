@@ -8,22 +8,40 @@
         :key="item.id"
         v-if="handleType(item.type)"
         @dblclick="openApp(item)"
+        @contextmenu.prevent.stop="openContextMenu"
       >
         <div>
           <img :src="item.logo" alt="" />
         </div>
-        <div class="u-line-2">{{ item.name }}</div>
+        <div class="u-line-2 app-name">{{ item.name }}</div>
       </div>
     </template>
+
+    <context-menu
+      v-model="showMenu"
+      :eventInfo="eventInfo"
+      :menuList="menuList"
+      @change="openApp"
+    ></context-menu>
   </div>
 </template>
 
 <script>
+import ContextMenu from '@/components/common/ContextMenu'
+
 export default {
   name: 'AppList',
+  components: {
+    ContextMenu
+  },
   data () {
     return {
-      appList: []
+      appList: [],
+      showMenu: false,
+      eventInfo: {},
+      menuList: [
+        { id: 1, name: '打开' },
+      ],
     }
   },
   computed: {
@@ -44,7 +62,14 @@ export default {
       this.$store.commit('changeAppModal', { data: item, show: true })
       this.$store.commit('changeActionApp', item)
       this.$store.commit('changeAppZindex', item)
-    }
+    },
+    openContextMenu (e) {
+      this.eventInfo = {
+        clientX: e.clientX,
+        clientY: e.clientY,
+      }
+      this.showMenu = true
+    },
   },
 }
 </script>
@@ -58,13 +83,12 @@ export default {
 .app-item {
   margin-bottom: 10px;
   padding: 6px;
-  width: 60px;
+  width: 70px;
   font-size: 12px;
   color: #fff;
   border-radius: 6px;
   line-height: 16px;
   user-select: none;
-
   img {
     width: 40px;
     height: 40px;
@@ -73,5 +97,8 @@ export default {
 }
 .app-item:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+.app-name {
+  word-break: break-all;
 }
 </style>
