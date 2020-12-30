@@ -21,7 +21,7 @@
       v-model="showMenu"
       :eventInfo="eventInfo"
       :menuList="menuList"
-      @change="openApp"
+      @change="menuChange"
     ></context-menu>
   </div>
 </template>
@@ -70,6 +70,11 @@ export default {
       }
       this.showMenu = true
     },
+    menuChange (data) {
+      if (data.id === 1) {
+        this.openApp(data)
+      }
+    }
   },
 }
 </script>

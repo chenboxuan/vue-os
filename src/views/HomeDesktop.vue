@@ -4,7 +4,7 @@
       <home-header></home-header>
     </div>
 
-    <div class="app-list">
+    <div class="app-list" @contextmenu.prevent.stop="openContextMenu">
       <app-list></app-list>
     </div>
 
@@ -13,6 +13,13 @@
     </div>
 
     <manage-app></manage-app>
+
+    <context-menu
+      v-model="showMenu"
+      :eventInfo="eventInfo"
+      :menuList="menuList"
+      @change="menuChange"
+    ></context-menu>
   </div>
 </template>
 
@@ -21,6 +28,7 @@ import HomeHeader from '@/components/home/HomeHeader';
 import HomeFooter from '@/components/home/HomeFooter';
 import AppList from '@/components/home/AppList';
 import ManageApp from '@/components/home/ManageApp';
+import ContextMenu from '@/components/common/ContextMenu'
 
 export default {
   name: 'HomeDesktop',
@@ -28,8 +36,35 @@ export default {
     HomeHeader,
     HomeFooter,
     AppList,
-    ManageApp
-  }
+    ManageApp,
+    ContextMenu,
+  },
+  data () {
+    return {
+      showMenu: false,
+      eventInfo: {},
+      menuList: [
+        { id: 1, name: '刷新' },
+        { id: 2, name: 'GitHub' },
+      ]
+    }
+  },
+  methods: {
+    openContextMenu (e) {
+      this.eventInfo = {
+        clientX: e.clientX,
+        clientY: e.clientY,
+      }
+      this.showMenu = true
+    },
+    menuChange (data) {
+      if (data.id === 1) {
+        location.reload()
+      } else if (data.id === 2) {
+        window.open('https://github.com/chenboxuan/vue-os', '_blank')
+      }
+    }
+  },
 }
 </script>
 
