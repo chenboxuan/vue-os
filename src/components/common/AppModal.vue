@@ -9,7 +9,7 @@
       width: app.modalInfo.width,
       height: app.modalInfo.height,
     }"
-    v-if="visible"
+    v-if="app.modalInfo.visible"
     @click="action"
   >
     <div
@@ -97,7 +97,7 @@
         </div>
       </div>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" :style="bodyStyle">
       <slot name="body"></slot>
     </div>
 
@@ -120,12 +120,14 @@ import { getOffset } from '@libs/util'
 export default {
   name: 'AppModal',
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
     app: {
       type: Object
+    },
+    bodyStyle: {
+      type: Object,
+      default: function () {
+        return {}
+      }
     }
   },
   computed: {
@@ -341,6 +343,10 @@ export default {
   background-color: #ececec;
   user-select: none;
 }
+.modal-body {
+  width: 100%;
+  height: calc(100% - 45px);
+}
 .modal-title {
   width: 90%;
   cursor: move;
@@ -356,9 +362,6 @@ export default {
   span {
     vertical-align: middle;
   }
-}
-.modal-body {
-  padding: 10px;
 }
 .btn-item {
   width: 14px;

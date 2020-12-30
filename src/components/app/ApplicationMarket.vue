@@ -1,11 +1,11 @@
 <template>
-  <div>我的云盘内容</div>
+  <div>应用市场</div>
 </template>
 
 <script>
 export default {
-  name: 'MyCloud',
-  props :{
+  name: 'ApplicationMarket',
+  props: {
     app: {
       type: Object,
     }
@@ -14,5 +14,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 </style>

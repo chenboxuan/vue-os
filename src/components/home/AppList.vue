@@ -6,7 +6,7 @@
       <div
         class="u-flex u-flex-col u-col-center u-row-center app-item"
         :key="item.id"
-        v-if="item.type === 1"
+        v-if="handleType(item.type)"
         @dblclick="openApp(item)"
       >
         <div>
@@ -24,6 +24,15 @@ export default {
   data () {
     return {
       appList: []
+    }
+  },
+  computed: {
+    handleType () {
+      return type => {
+        // 桌面应用 或 iframe应用
+        const arr = [1, 2]
+        return arr.indexOf(type) >= 0
+      }
     }
   },
   created () {

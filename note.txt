@@ -10,6 +10,7 @@
     name：app名称
     logo：applogo
     type：应用类型 | Number（1:桌面应用）
+    iframe: 当应用为内嵌其他页面时的链接地址
     modalInfo：弹窗用到的数据
       modalInfo.component：弹窗内容组件名称（动态组件对应的组件名）
       modalInfo.visible: 控制弹窗显示与隐藏
@@ -18,6 +19,7 @@
       modalInfo.top: 弹窗定位位置
       modalInfo.zIndex: 弹窗权重
       modalInfo.isFull: 是否全屏
+      modalInfo.number: 底部标签列表排序用
 
   4.（vuex）actionApp是当前正在操作的弹窗对应的app数据，当双击桌面时赋值，点击底部标签时赋值。
 

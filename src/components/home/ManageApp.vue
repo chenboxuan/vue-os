@@ -1,26 +1,30 @@
 <template>
   <div>
-    <template v-for="item of $store.state.appList">
-      <app-modal :key="item.id" :visible="item.modalInfo.visible" v-if="item.modalInfo.visible" :app="item">
-        <template #body>
-          <component :is="item.modalInfo.component"></component>
-        </template>
-      </app-modal>
-    </template>
+    <app-modal
+      v-for="item of $store.state.appList"
+      :key="item.id"
+      :app="item"
+    >
+      <template #body>
+        <component :is="item.modalInfo.component" :app="item"></component>
+      </template>
+    </app-modal>
   </div>
 </template>
 
 <script>
 import AppModal from '@/components/common/AppModal'
 import MyCloud from '@/components/app/MyCloud'
-import MyProject from '@/components/app/MyProject'
+import IframePage from '@/components/app/IframePage'
+import ApplicationMarket from '@/components/app/ApplicationMarket'
 
 export default {
   name: 'ManageApp',
   components: {
-    MyCloud,
     AppModal,
-    MyProject,
+    MyCloud,
+    IframePage,
+    ApplicationMarket,
   },
 }
 </script>
