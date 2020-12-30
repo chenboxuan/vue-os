@@ -3,6 +3,7 @@ const path = require('path')
 
 module.exports = {
   lintOnSave: false,
+  publicPath: '/',
 
   chainWebpack: config => {
     // 自动化导入css文件

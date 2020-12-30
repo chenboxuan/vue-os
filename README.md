@@ -2,7 +2,7 @@
 
 ## 演示
 
-[项目演示地址](https://chenboxuan.github.io/vue-os/)
+[项目演示地址](https://os.chenboxuan.cn)
 
 ## 截图
 
